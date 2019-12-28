@@ -1,0 +1,24 @@
+{
+  "name": "watcher",
+  "version": "1.0.0",
+  "description": "Twitter bot, watch for an update at akademik.itb.ac.id and tweet about it",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aryuuu/watcher.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aryuuu/watcher/issues"
+  },
+  "homepage": "https://github.com/aryuuu/watcher#readme",
+  "dependencies": {
+    "twit": "^2.2.11",
+    "zombie": "^6.1.4"
+  }
+}
