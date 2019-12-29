@@ -9,6 +9,7 @@ const ACCESSTOKEN = process.env.ACCESSTOKEN;
 const ACCESSTOKENSECRET = process.env.ACCESSTOKENSECRET;
 const INAUSERNAME = process.env.INAUSERNAME;
 const INAPWD = process.env.INAPWD;
+const watchtime = 3*60*60*1000;
 
 var app = new Twit({
 	consumer_key: APIKEY,
@@ -18,7 +19,6 @@ var app = new Twit({
 });
 
 
-var fatt = new watcher(INAUSERNAME, INAPWD);
 
 
 function tweet(content) {
@@ -32,4 +32,30 @@ function tweet(content) {
 		console.log(data)
 	})
 }
+// tweet("Night gathers, and now my watch begins.");
 
+// initiate watcher
+var fatt = new watcher(INAUSERNAME, INAPWD);
+
+fatt.login(() => {
+	fatt.setCourses();
+});
+
+// chech update every 3 hours, then tweet about it
+setTimeout(() => {
+	fatt.login(() => {
+		
+		let update = fatt.isUpdate();
+
+		if (update.updated) {
+			fatt.updateCourses();
+			tweet(`${update.course_name} is up 
+				check it out at ${fatt.url_six}`);
+		} else {
+			tweet(`No update yet, please wait`);
+		}
+
+	});
+
+
+}, watchtime);
