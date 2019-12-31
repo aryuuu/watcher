@@ -29,7 +29,7 @@ function tweet(content) {
 
 	app.post('statuses/update', params, (err, data, response) => {
 
-		console.log(data)
+		// console.log(data)
 	})
 }
 // tweet("Night gathers, and now my watch begins.");
@@ -42,7 +42,7 @@ fatt.login(() => {
 });
 
 // chech update every 3 hours, then tweet about it
-setTimeout(() => {
+setInterval(() => {
 	fatt.login(() => {
 		
 		let update = fatt.isUpdate();
